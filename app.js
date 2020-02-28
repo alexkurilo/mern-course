@@ -1,10 +1,13 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
+const authRoute = require('./routes/auth.routes');
 
 const app = express();
 const PORT = config.get('port') || 5000;
 const mongoUri = config.get('mongoUri');
+
+app.use('/api/auth', authRoute);//роут авторизации
 
 async function start () {
     try {
