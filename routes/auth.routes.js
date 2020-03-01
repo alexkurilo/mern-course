@@ -39,15 +39,15 @@ router.post(
             }
 
             const hashedPassword = await bcrypt.hash(password, SALT);
-            const user = new Usere({
+
+            const user = new User({
                 email: email,
                 password: hashedPassword,
-                name: name
             });
 
             await user.save();
 
-            response.status(201).json({message: `User ${user.name} is created.`});
+            response.status(201).json({message: `User is created.`});
         } catch (e) {
             response.status(500).json({message: `Something went wrong when registration, try it again.`});
         }
@@ -65,6 +65,7 @@ router.post(
     ],
     async (request, response) => {  //route /api/auth/login
         try {
+            const {email, password} = request.body;
             const errors = validationResult(request);
 
             if (!errors.isEmpty()) {
@@ -74,19 +75,15 @@ router.post(
                 });
             }
 
-            const {email, password, name} = request.body;
-            const user = await User.findOne({
-                email: email
-            });
+            const user = await User.findOne({ email });
 
             if (!user) {
-                return request.status(464).json({ message: `User with such ${email} not found.`});
+                return request.status(464).json({ message: `User with such not found.`});
             }
-
             const isMatch = await bcrypt.compare(password, user.password);// сравниваю password введенный юзером и хешированный в БД
 
             if (!isMatch) {
-                return response.status(465).json({ message: `Invalid password ${password}, try again.`});
+                return response.status(465).json({ message: `Invalid password, try again.`});
             }
 
             const token = jwt.sign(
