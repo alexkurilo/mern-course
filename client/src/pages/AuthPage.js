@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useHttp} from '../hooks/http.hook';
 import {useMessage} from '../hooks/message.hook';
+import {AuthContext} from '../context/AuthContext';
 
 const AuthPage = () => {
+    const auth = useContext(AuthContext);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
@@ -29,6 +31,14 @@ const AuthPage = () => {
     const registerHandler = async () => {
         try {
             const data = await request('/api/auth/register', 'POST', { ...form });
+            message(data.message);
+        } catch (e) {};
+    };
+
+    const signInHandler = async () => {
+        try {
+            const data = await request('/api/auth/login', 'POST', { ...form });
+            auth.login(data.token, data.userId);
         } catch (e) {};
     };
 
@@ -67,6 +77,7 @@ const AuthPage = () => {
                     <div className="card-action">
                         <button
                             className="btn yellow darken-4 margin_right"
+                            onClick={signInHandler}
                             disabled={loading}
                         >
                             Sign In
