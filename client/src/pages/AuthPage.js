@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHttp} from '../hooks/http.hook';
 
 const AuthPage = () => {
-    const {loading, error, request} = useHttp();
+    const {loading, request} = useHttp();
     const [form, setForm] = useState({
         email: '',
         password: '',
