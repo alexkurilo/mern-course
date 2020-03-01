@@ -7,6 +7,7 @@ const app = express();
 const PORT = config.get('port') || 5000;
 const mongoUri = config.get('mongoUri');
 
+app.use(express.json({ extended: true }));
 app.use('/api/auth', authRoute);//роут авторизации
 
 async function start () {
@@ -23,7 +24,6 @@ async function start () {
     }
 
 }
-
 
 start();
 
