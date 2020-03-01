@@ -1,6 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const AuthPage = () => {
+    const [form, setForm] = useState({
+        email: '',
+        password: '',
+    });
+
+    const changeHandler = event => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value,
+        });
+    };
+
     return (
         <div className="row">
             <div className="col s6 offset-s3">
@@ -16,6 +28,7 @@ const AuthPage = () => {
                                     type="text"
                                     name="email"
                                     className="yellow-input"
+                                    onChange={changeHandler}
                                 />
                                     <label htmlFor="email">Email</label>
                             </div>
@@ -26,6 +39,7 @@ const AuthPage = () => {
                                     type="password"
                                     name="password"
                                     className="yellow-input"
+                                    onChange={changeHandler}
                                 />
                                 <label htmlFor="password">Email</label>
                             </div>
