@@ -19,6 +19,7 @@ router.post(
     ],
     async (request, response) => {  //route /api/auth/register
         try {
+            // console.log(request.body);
             const errors = validationResult(request);
 
             if (!errors.isEmpty()) {
