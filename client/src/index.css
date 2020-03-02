@@ -29,3 +29,9 @@ input.yellow-input:focus + label{
 .padding_top {
     padding-top: 2rem;
 }
+
+.preloader {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
