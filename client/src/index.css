@@ -25,3 +25,7 @@ input.yellow-input:focus + label{
 .padding {
     padding: 0 2rem;
 }
+
+.padding_top {
+    padding-top: 2rem;
+}
