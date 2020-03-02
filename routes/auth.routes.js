@@ -94,7 +94,8 @@ router.post(
 
             response.json({
                 token,
-                userId: user.id
+                userId: user.id,
+                email,
             });
 
         } catch (e) {

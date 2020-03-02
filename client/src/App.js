@@ -7,7 +7,7 @@ import {Navbar} from './components/Navbar';
 import 'materialize-css';
 
 function App() {
-    const { login, logout, token, userId } = useAuth();
+    const { login, logout, token, userId, email } = useAuth();
     const isAuthenticated = !!token;
     const routes = useRoutes(isAuthenticated);
     return (
@@ -17,7 +17,8 @@ function App() {
                 logout,
                 token,
                 userId,
-                isAuthenticated
+                isAuthenticated,
+                email,
             }}
         >
             <BrowserRouter>
