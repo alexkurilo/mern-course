@@ -15,9 +15,9 @@ module.exports = (request, response, next) => {
             return response.status(401).json({ message: "Not authorisation."});
         }
 
-        const decodetToken = jwt(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
 
-        request.user = decodetToken;
+        request.user = decoded;
 
         next();
     } catch (e) {

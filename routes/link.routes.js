@@ -10,36 +10,39 @@ router.post(
     '/generate',
     auth,
     async (request, response) => {
-    try {
-        const baseUrl = config.get('baseUrl');
-        const {from} = request.body;
+        console.log('generate');
+        try {
+            const baseUrl = config.get('baseUrl');
 
-        const code = shortId.generate();
+            const {from} = request.body;
 
-        const existing = await Link.findOne({ from });
-        if (existing) {
-            return response.json({ link: existing });
+            const code = shortId.generate();
+
+            const existing = await Link.findOne({ from });
+            if (existing) {
+                return response.json({ link: existing });
+            }
+
+            const to = `${baseUrl}/t/${code}`;
+
+            const link = new Link({
+                code,
+                from,
+                to,
+                owner: request.user.userId,
+            });
+
+            await link.save();
+
+            response.status(201).json({
+                message: `Link is created.`,
+                link,
+            });
+        } catch (e) {
+            response.status(500).json({message: `Something went wrong when creating link, try it again.`});
         }
-
-        const to = `${baseUrl}/t/${code}`;
-
-        const link = new Link({
-            code,
-            from,
-            to,
-            owner: request.user.userId,
-        });
-
-        await link.save();
-
-        response.status(201).json({
-            message: `Link is created.`,
-            link,
-        });
-    } catch (e) {
-        response.status(500).json({message: `Something went wrong when creating link, try it again.`});
     }
-});
+);
 
 router.get(
     '/',
