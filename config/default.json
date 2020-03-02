@@ -2,5 +2,6 @@
   "port": 5000,
   "salt": 12,
   "jwtSecret": "something secret key",
-  "mongoUri": "mongodb+srv://user:pass@cluster0-elxy2.azure.mongodb.net/app?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://user:pass@cluster0-elxy2.azure.mongodb.net/app?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
 }

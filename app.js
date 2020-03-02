@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth.routes');
+const linkRoute = require('./routes/link.routes');
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -9,6 +10,7 @@ const mongoUri = config.get('mongoUri');
 
 app.use(express.json({ extended: true }));
 app.use('/api/auth', authRoute);//роут авторизации
+app.use('/api/link', linkRoute);//роут ссылок
 
 async function start () {
     try {
