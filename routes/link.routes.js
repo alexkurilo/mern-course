@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const config = require("config");
 const shortId = require('shortid');
-const Link = require('../models/Link');
+const Link = require('../models/LinkModel');
 const auth = require('../middleware/auth.middleware');
 
 const router = Router();
@@ -10,7 +10,6 @@ router.post(
     '/generate',
     auth,
     async (request, response) => {
-        console.log('generate');
         try {
             const baseUrl = config.get('baseUrl');
 
@@ -51,7 +50,6 @@ router.get(
     try {
         const links = await Link.find({ owner: request.user.userId });
         response.json(links);
-
     } catch (e) {
         response.status(500).json({message: `Something went wrong when request links, try it again.`});
     }

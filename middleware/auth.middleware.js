@@ -4,7 +4,7 @@ const config = require("config");
 const JWT_SECRET = config.get('jwtSecret');
 
 module.exports = (request, response, next) => {
-    if (request.method === 'OPTIONS') {//проверяем доступрост сервера
+    if (request.method === 'OPTIONS') {//проверяем доступность сервера
         return next();
     }
     
@@ -15,7 +15,7 @@ module.exports = (request, response, next) => {
             return response.status(401).json({ message: "Not authorisation."});
         }
 
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);//декодирую token
 
         request.user = decoded;
 

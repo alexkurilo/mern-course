@@ -3,7 +3,7 @@ import {useHttp} from '../hooks/http.hook';
 import {useMessage} from '../hooks/message.hook';
 import {AuthContext} from '../context/AuthContext';
 
-const AuthPage = () => {
+export const AuthPage = () => {
     const auth = useContext(AuthContext);
     const message = useMessage();
     const {loading, request, error, clearError} = useHttp();
@@ -100,5 +100,3 @@ const AuthPage = () => {
         </div>
     );
 };
-
-export default AuthPage;

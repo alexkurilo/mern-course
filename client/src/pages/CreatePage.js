@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import {useHttp} from '../hooks/http.hook';
 import {AuthContext} from '../context/AuthContext';
 
-const CreatePage = () => {
+export const CreatePage = () => {
     const history = useHistory();
     const auth = useContext(AuthContext);
     const {request} = useHttp();
@@ -47,5 +47,3 @@ const CreatePage = () => {
         </div>
     );
 };
-
-export default CreatePage;

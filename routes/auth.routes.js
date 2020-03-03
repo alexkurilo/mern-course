@@ -3,7 +3,7 @@ const config = require("config");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {check, validationResult} = require('express-validator');
-const User = require('../models/User');
+const User = require('../models/UserModel');
 
 const router = Router();
 const SALT = config.get('salt');

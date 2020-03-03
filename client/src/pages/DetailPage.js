@@ -6,7 +6,7 @@ import {AuthContext} from '../context/AuthContext';
 import {LinkCard} from '../components/LinkCard';
 import {Loader} from '../components/Loader';
 
-const DetailPage = () => {
+export const DetailPage = () => {
     const {token} = useContext(AuthContext);
     const {request, loading} = useHttp();
     const [link, setLink] = useState(null);
@@ -35,5 +35,3 @@ const DetailPage = () => {
         </>
     );
 };
-
-export default DetailPage;
