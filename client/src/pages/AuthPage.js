@@ -36,14 +36,14 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/register', 'POST', { ...form });
             message(data.message);
-        } catch (e) {};
+        } catch (e) {}
     };
 
     const signInHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', { ...form });
             auth.login(data.token, data.userId, data.email);
-        } catch (e) {};
+        } catch (e) {}
     };
 
     return (

@@ -35,3 +35,9 @@ input.yellow-input:focus + label{
     justify-content: center;
     padding-top: 2rem;
 }
+
+td.td_link{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
