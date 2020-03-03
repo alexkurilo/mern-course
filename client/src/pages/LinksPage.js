@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LinksPage = () => {
+export const LinksPage = () => {
     return (
         <div>
             <h1>
@@ -9,5 +9,3 @@ const LinksPage = () => {
         </div>
     );
 };
-
-export default LinksPage;

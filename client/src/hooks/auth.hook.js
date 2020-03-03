@@ -34,5 +34,12 @@ export const useAuth = () => {
         setReady(true);
     }, [login]);
 
-    return { login, logout, token, userId, email, ready};
+    return {
+        login,
+        logout,
+        token,
+        userId,
+        email,
+        ready,
+    };
 };
