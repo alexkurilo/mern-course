@@ -24,5 +24,5 @@ export const LinksPage = () => {
         fetchLinks();
     }, [fetchLinks]);
 
-    return loading ? <Loader/> : <><ListLinks links={links}/></>;
+    return loading ? <Loader/> : <ListLinks links={links}/>;
 };

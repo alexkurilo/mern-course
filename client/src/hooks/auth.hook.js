@@ -3,10 +3,11 @@ import {useCallback, useState, useEffect} from 'react';
 const storageName = 'userData';
 
 export const useAuth = () => {
-    const [token, setToken] = useState(null);
+    const local = JSON.parse(localStorage.getItem(storageName));
+    const [token, setToken] = useState(local ? local.token : null);
     const [ready, setReady] = useState(false);
-    const [userId, setUserId] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [userId, setUserId] = useState(local ? local.userId : null);
+    const [email, setEmail] = useState(local ? local.email : null);
 
     const login = useCallback((jwtToken, id, email) => {
         setToken(jwtToken);
