@@ -3,14 +3,16 @@ const config = require('config');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth.routes');
 const linkRoute = require('./routes/link.routes');
+const redirectRoute = require('./routes/redirect.routes');
 
 const app = express();
 const PORT = config.get('port') || 5000;
 const mongoUri = config.get('mongoUri');
 
 app.use(express.json({ extended: true }));
-app.use('/api/auth', authRoute);//роут авторизации
-app.use('/api/link', linkRoute);//роут ссылок
+app.use('/api/auth', authRoute);//роуты авторизации
+app.use('/api/link', linkRoute);//роуты ссылок
+app.use('/t', redirectRoute);//роуты для редиректа сокращенных ссылок
 
 async function start () {
     try {
