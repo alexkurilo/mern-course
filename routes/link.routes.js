@@ -50,7 +50,6 @@ router.get(
     try {
         const links = await Link.find({ owner: request.user.userId });
         response.json(links);
-
     } catch (e) {
         response.status(500).json({message: `Something went wrong when request links, try it again.`});
     }

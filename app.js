@@ -24,7 +24,6 @@ async function start () {
         console.log(`Server error`, e.message);
         process.exit(1);// выйти из процесса
     }
-
 }
 
 start();
