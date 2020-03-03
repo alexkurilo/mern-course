@@ -10,7 +10,6 @@ router.post(
     '/generate',
     auth,
     async (request, response) => {
-        console.log('generate');
         try {
             const baseUrl = config.get('baseUrl');
 
